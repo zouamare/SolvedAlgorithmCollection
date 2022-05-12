@@ -1,11 +1,11 @@
 class Solution {
     public int solution(int n) {
-        int cnt = 1;
+        int cnt = 0;
 
         int left = 1;
         int right = 2;
 
-        while(right<n){
+        while(left<=n){
             int total = 0;
             for(int k=left; k<=right; k++)
                 total += k;
