@@ -1,4 +1,3 @@
-import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -12,7 +11,6 @@ class Solution
         for(int test_case = 1; test_case<=T; test_case++){
             String input_str = sc.next();
             String output_str = "";
-            ByteBuffer bb = ByteBuffer.allocate(3);
             for(int i=0; i<input_str.length(); i+=4){
                 String tmp = "";
                 tmp += String.format("%06d",Integer.parseInt(Integer.toBinaryString(hm.get(input_str.charAt(i)))));
