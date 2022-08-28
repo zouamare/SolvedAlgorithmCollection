@@ -1,0 +1,48 @@
+package coding_test.Algo20220828;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class BOJ_15652_N과M_5 {
+    static int N, M;
+    static int[] data;
+    static StringBuilder sb;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        data = new int[N];
+        st = new StringTokenizer(br.readLine());
+        for(int i = 0; i < N; i++)  data[i] = Integer.parseInt(st.nextToken());
+        Arrays.sort(data);
+        sb = new StringBuilder();
+        perm(0, new int[M], new boolean[N]);
+        System.out.println(sb);
+    }
+
+    private static void perm(int depth, int[] output, boolean[] visited) {
+        if(depth == M){
+            print(output);
+            return;
+        }
+        for(int i = 0; i < N; i++){
+            if(visited[i])  continue;
+            visited[i] = true;
+            output[depth] = data[i];
+            perm(depth+1, output,visited);
+            visited[i] = false;
+        }
+    }
+
+    private static void print(int[] output) {
+        for(int i = 0; i < M; i++){
+            sb.append(output[i]);
+            if(i != M-1)    sb.append(" ");
+        }
+        sb.append("\n");
+    }
+}
